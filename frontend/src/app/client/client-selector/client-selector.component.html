@@ -1,0 +1,13 @@
+<!-- src/app/client/client-selector/client-selector.component.html -->
+<div class="mb-4">
+  <label for="client-select" class="block mb-1 font-medium">
+    Choisir un client :
+  </label>
+  <select id="client-select" (change)="onChange($event)"
+          class="border rounded px-2 py-1 w-full">
+    <option value="" disabled selected>-- sélectionnez --</option>
+    <option *ngFor="let c of clients" [value]="c._id">
+      {{ c.nom }} ({{ c.email }})
+    </option>
+  </select>
+</div>

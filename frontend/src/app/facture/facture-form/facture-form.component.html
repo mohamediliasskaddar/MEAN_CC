@@ -1,0 +1,50 @@
+<!-- src/app/facture/facture-form/facture-form.component.html -->
+<form [formGroup]="factureForm" (ngSubmit)="onSubmit()">
+  <!-- Ici, tu peux intégrer client-selector ou recevoir clientId via @Input -->
+  <!-- Lignes de commande -->
+  <div formArrayName="lignes">
+    <div *ngFor="let ligne of lignes.controls; let i = index" [formGroupName]="i" class="mb-4 border p-2 rounded">
+      <div class="grid grid-cols-5 gap-2 items-end">
+        <!-- Produit -->
+        <div>
+          <label>Produit</label>
+          <select formControlName="produitId" class="border rounded w-full">
+            <option value="" disabled>-- Choisir --</option>
+            <option *ngFor="let p of produits" [value]="p._id">{{ p.libelle }}</option>
+          </select>
+        </div>
+        <!-- Quantité -->
+        <div>
+          <label>Quantité</label>
+          <input type="number" formControlName="quantite" class="border rounded w-full" min="1" />
+        </div>
+        <!-- Prix Unitaire -->
+        <div>
+          <label>PU</label>
+          <input type="text" formControlName="prixUnitaire" class="border rounded w-full"  />
+        </div>
+        <!-- Total Ligne -->
+        <div>
+          <label>Total</label>
+          <input type="text" formControlName="totalLigne" class="border rounded w-full"  />
+        </div>
+        <!-- Actions -->
+        <div class="flex space-x-2">
+          <button type="button" (click)="addLigne()" class="px-2 py-1 border rounded">➕</button>
+          <button type="button" (click)="removeLigne(i)" class="px-2 py-1 border rounded">❌</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Totaux -->
+  <div class="mt-4">
+    <p><strong>Total HT:</strong> {{ totalHT | number:'1.2-2' }} €</p>
+    <p><strong>Total TTC (TVA {{ TVA * 100 }}%):</strong> {{ totalTTC | number:'1.2-2' }} €</p>
+  </div>
+
+  <!-- Bouton de validation -->
+  <div class="mt-4">
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Enregistrer la facture</button>
+  </div>
+</form>

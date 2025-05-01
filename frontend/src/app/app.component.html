@@ -1,0 +1,4 @@
+<app-client-selector (selected)="onClientSelected($event)"></app-client-selector>
+
+<!-- On passe maintenant `client` à FactureFormComponent via un @Input -->
+<app-facture-form *ngIf="client" [client]="client"></app-facture-form>
