@@ -1,5 +1,5 @@
 // backend/server.js
-require('dotenv').config();   // Charge .env
+require('dotenv').config();   
 console.log('🔍 Environnement :', {
   PORT: process.env.PORT,
   MONGO_URI: process.env.MONGO_URI
@@ -35,8 +35,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Serveur lancé sur http://localhost:${PORT}`);
 });
 
-// //routes
-// const clientRoutes = require('./routes/clientRoutes');
-// app.use('/api/clients', clientRoutes);
 
 

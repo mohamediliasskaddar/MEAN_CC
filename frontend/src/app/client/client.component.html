@@ -1,0 +1,37 @@
+
+<!-- 
+<label for="date"> date : <h3>  {{ now | date:'yyyy-MM-dd HH:mm' }} </h3></label>
+<label for="selectedID">Choisir un client :</label>
+
+<select [(ngModel)]="selectedClientId" name="selectedID" (change)="onClientChange()">// la varible selectedClientId que parle sur lui 
+  <option *ngFor="let client of clients" [value]="client._id">
+    {{ client.nom }} ({{ client.email }})
+  </option>
+</select>
+
+<p *ngIf="clients.length === 0">Aucun client trouvé.</p> -->
+
+<div class="mb-4">
+  <label for="date" class="form-label">
+    <h5 class="d-inline"> Date : {{ now | date:'yyyy-MM-dd HH:mm' }}</h5>
+  </label>
+</div>
+
+<div class="mb-3">
+  <label for="selectedID" class="form-label">Choisir un client :</label>
+  <select
+    class="form-select"
+    [(ngModel)]="selectedClientId"
+    name="selectedID"
+    (change)="onClientChange()"
+    id="selectedID"
+  >
+    <option value="">-- Sélectionner --</option>
+    <option *ngFor="let client of clients" [value]="client._id">
+      {{ client.nom }} ({{ client.email }})
+    </option>
+  </select>
+  <div *ngIf="clients.length === 0" class="form-text text-danger">
+    Aucun client trouvé.
+  </div>
+</div>

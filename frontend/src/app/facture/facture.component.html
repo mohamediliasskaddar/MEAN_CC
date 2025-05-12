@@ -1,0 +1,104 @@
+<!-- <table>
+  <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Quantité</th>
+      <th>Prix Unitaire</th>
+      <th>Total Ligne</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let l of ligneCmd ;   let i = index  " >
+      <td>
+       <select [(ngModel)]="l.prodId" (change)="onProd(i)" name="prod-{{i}}">
+            <option value=""> Choisir un produit </option>
+            <option *ngFor= "let p of Products" [value]="p._id">  {{ p.libelle }}  </option>
+        </select>
+     </td>
+      <td>
+        <input type="number" [(ngModel)]="l.qte"  min="1" name="qte-{{i}}" id="quantite"/>
+      </td>
+      <td>  {{ l.Pu }} </td>
+      <td> {{l.Pu * l.qte}} </td>
+      <td>
+        <button (click)="newligne()">add new product</button>
+        <button (click)="deleteLigne(i)" [disabled]="ligneCmd.length === 1"> delete</button>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+
+<h3>Total HT : {{ totalHT | number:'1.2-2' }} €</h3>
+<h3>Total TTC (TVA 20%) : {{ totalTTC | number:'1.2-2' }} €</h3>
+
+<button (click)="saveCmd()">save commande  </button> -->
+<div class="table-responsive">
+  <table class="table table-bordered table-striped align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix Unitaire</th>
+        <th>Total Ligne</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of ligneCmd; let i = index">
+        <td>
+          <select
+            class="form-select form-select-sm"
+            [(ngModel)]="l.prodId"
+            (change)="onProd(i)"
+            name="prod-{{i}}"
+          >
+            <option value="">Choisir un produit</option>
+            <option *ngFor="let p of Products" [value]="p._id">
+              {{ p.libelle }}
+            </option>
+          </select>
+        </td>
+        <td>
+          <input
+            type="number"
+            class="form-control form-control-sm"
+            [(ngModel)]="l.qte"
+            min="1"
+            name="qte-{{i}}"
+          />
+        </td>
+        <td>{{ l.Pu | number:'1.2-2' }} €</td>
+        <td>{{ (l.Pu * l.qte) | number:'1.2-2' }} €</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-1" (click)="newligne()">
+            ➕
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteLigne(i)"
+            [disabled]="ligneCmd.length === 1"
+          >
+            ❌
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="d-flex justify-content-end my-3">
+  <div class="me-5">
+    <h5>Total HT : {{ totalHT | number:'1.2-2' }} €</h5>
+  </div>
+  <div>
+    <h5>Total TTC (TVA 20%) : {{ totalTTC | number:'1.2-2' }} €</h5>
+  </div>
+</div>
+
+<div class="text-end">
+  <button class="btn btn-success" (click)="saveCmd()">
+    Enregistrer la commande
+  </button>
+</div>

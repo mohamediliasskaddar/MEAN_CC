@@ -1,59 +1,97 @@
-# Frontend
+# MEAN_CC — Invoice Management App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+This project is a **full-stack Invoice Management application** built with the **MEAN stack** (MongoDB, Express.js, Angular, Node.js).
 
-## Development server
+The application allows users to:
+- Select a client
+- Create and manage invoices (factures)
+- Add product lines and calculate totals
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🚀 Getting Started
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (local or Atlas) i used Compass
+- Angular CLI 
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 🧩 Backend Setup
 
 ```bash
-ng generate --help
+cd backend
+npm install
+Create a .env file in /backend/:
+
+env
 ```
-
-## Building
-
-To build the project run:
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/mean_factures
+Start MongoDB (if installed locally):
 
 ```bash
-ng build
+
+mongod or mongosh 
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Run the backend server:
 
 ```bash
-ng test
+
+npm start
 ```
+The API will be available at http://localhost:3000/api/
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+💻 Frontend Setup
 ```bash
-ng e2e
+
+cd frontend
+npm install
+Start the Angular app:
 ```
+```bash
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+npm start
+```
+App will run at http://localhost:4200/
 
-## Additional Resources
+🎨 UI & Styling
+The frontend UI is styled using Bootstrap to ensure a responsive and clean interface.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+📡 API Endpoints (examples)
+GET /api/clients - List all clients
+
+POST /api/clients - Create a new client
+
+GET /api/produits - List products
+
+POST /api/factures - Submit an invoice (to be implemented)
+
+✅ Features (in progress)
+ Select a client from the list
+
+ Display a dynamic invoice form
+
+ Modular structure with Angular standalone components
+
+ Save invoices with multiple product lines
+
+ Edit / view past invoices
+
+🛠️ Technologies
+Frontend: Angular 20 (Standalone Components) + Bootstrap
+
+Backend: Node.js, Express
+
+Database: MongoDB + Mongoose
+
+Communication: REST API with HttpClient
+
+🧑‍💻 Authors
+Mohamed iliass kaddar  – Developer, Designer, Architect
+
+For academic use, include institution name and project number.
+
+📄 License
+This project is for educational purposes only.
